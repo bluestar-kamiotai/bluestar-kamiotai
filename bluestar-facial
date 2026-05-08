@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美肌再生プロジェクト｜名古屋・ブルースター</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose-dark:   #E8738A;
+    --rose-mid:    #F09AAB;
+    --rose-light:  #F5BEC8;
+    --rose-pale:   #FAD9E0;
+    --rose-mist:   #FEF0F3;
+    --cream:       #FDFAF7;
+    --white:       #FFFFFF;
+    --brown-dark:  #3B2314;
+    --brown-mid:   #6B3D2E;
+    --brown-light: #A0674F;
+    --beige:       #E8D5C4;
+    --text-dark:   #2A1508;
+    --text-mid:    #5C3D2A;
+    --text-light:  #8C6B55;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Noto Serif JP', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--rose-dark);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 35%, rgba(240,180,190,0.25) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 15% 80%, rgba(220,130,150,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 85% 20%, rgba(250,200,210,0.2) 0%, transparent 55%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 28px;
+    max-width: 820px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: var(--rose-pale);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 9vw, 84px);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose-pale);
+    display: block;
+    font-size: 0.85em;
+  }
+
+  .hero-sub {
+    font-size: clamp(13px, 2vw, 15px);
+    font-weight: 300;
+    line-height: 2.4;
+    letter-spacing: 0.15em;
+    color: var(--cream);
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.9s forwards;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 18px 56px;
+    background: var(--white);
+    color: var(--rose-dark);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.2s forwards;
+    cursor: pointer;
+    border: none;
+  }
+
+  .hero-cta:hover {
+    background: var(--rose-pale);
+    color: var(--rose-dark);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s ease 2s forwards;
+  }
+
+  .hero-scroll p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    letter-spacing: 0.4em;
+    color: var(--rose-pale);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--rose-pale), transparent);
+    animation: scrollAnim 2s ease-in-out infinite;
+  }
+
+  /* ── SHARED ── */
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.5em;
+    color: var(--rose-mid);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+    color: var(--brown-dark);
+    margin-bottom: 48px;
+  }
+
+  .section-title em { font-style: italic; color: var(--rose-dark); }
+
+  .rose-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  .divider-line {
+    flex: 1;
+    max-width: 160px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rose-light));
+  }
+
+  .divider-line.r {
+    background: linear-gradient(to left, transparent, var(--rose-light));
+  }
+
+  .divider-diamond {
+    width: 5px; height: 5px;
+    background: var(--rose-mid);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* ── PAIN ── */
+  .pain-section {
+    padding: 120px 24px;
+    background: var(--rose-mist);
+    text-align: center;
+  }
+
+  .pain-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pain-section .section-label { color: var(--rose-dark); }
+  .pain-section .section-title { color: var(--brown-dark); }
+  .pain-section .section-title em { color: var(--rose-dark); font-style: italic; }
+
+  .pain-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--rose-pale);
+    margin-bottom: 48px;
+  }
+
+  .pain-item {
+    background: var(--white);
+    padding: 24px 20px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: var(--text-dark);
+  }
+
+  .pain-item::before {
+    content: '—';
+    color: var(--rose-dark);
+    margin-right: 8px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .pain-lead {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 2.6;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+  }
+
+  .pain-lead strong {
+    color: var(--brown-dark);
+    font-weight: 400;
+    display: block;
+    margin-top: 8px;
+  }
+
+  /* ── CONCEPT ── */
+  .concept-section {
+    padding: 120px 24px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .concept-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 3;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+  }
+
+  .concept-text strong {
+    color: var(--brown-dark);
+    font-weight: 400;
+    display: block;
+    font-size: 17px;
+    margin: 8px 0;
+  }
+
+  /* ── INGREDIENT ── */
+  .ingredient-section {
+    padding: 120px 24px;
+    background: var(--rose-mist);
+  }
+
+  .ingredient-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .ingredient-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .ingredient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .ingredient-card {
+    background: var(--white);
+    padding: 48px 32px;
+    position: relative;
+    border-top: 3px solid var(--rose-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ingredient-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(125,78,87,0.1);
+  }
+
+  .ingredient-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(198,160,168,0.25);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .ingredient-name {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--brown-dark);
+    margin-bottom: 8px;
+  }
+
+  .ingredient-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--rose-mid);
+    margin-bottom: 20px;
+  }
+
+  .ingredient-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.3;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+  }
+
+  .ingredient-note {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 2.4;
+    letter-spacing: 0.12em;
+    color: var(--text-mid);
+    padding: 32px 24px;
+    border: 1px solid var(--rose-pale);
+    background: var(--white);
+  }
+
+  .ingredient-note strong {
+    color: var(--rose-dark);
+    font-weight: 400;
+  }
+
+  /* ── DEVICE ── */
+  .device-section {
+    padding: 120px 24px;
+    background: var(--cream);
+  }
+
+  .device-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .device-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .device-steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .device-step {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 28px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rose-pale);
+    align-items: start;
+  }
+
+  .device-step:last-child { border-bottom: none; }
+
+  .device-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--rose-mist);
+    border: 1px solid var(--rose-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose-dark);
+    flex-shrink: 0;
+  }
+
+  .device-content h3 {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+    padding-top: 8px;
+  }
+
+  .device-content p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.3;
+    letter-spacing: 0.08em;
+    color: var(--text-dark);
+  }
+
+  /* ── FLOW ── */
+  .flow-section {
+    padding: 120px 24px;
+    background: var(--rose-mist);
+  }
+
+  .flow-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .flow-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .flow-steps { position: relative; }
+
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 27px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--rose-light), transparent);
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 24px;
+    margin-bottom: 44px;
+    align-items: start;
+  }
+
+  .flow-step-num {
+    width: 56px; height: 56px;
+    border: 1px solid var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rose-dark);
+    background: var(--white);
+    position: relative; z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .flow-step-body h3 {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+    padding-top: 14px;
+  }
+
+  .flow-step-body p {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2.3;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+  }
+
+  /* ── CONCERN ── */
+  .concern-section {
+    padding: 120px 24px;
+    background: var(--cream);
+  }
+
+  .concern-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .concern-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .concern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .concern-item {
+    background: var(--rose-mist);
+    border-left: 3px solid var(--rose-light);
+    padding: 20px 20px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: var(--text-dark);
+  }
+
+  .concern-item::before {
+    content: '✓';
+    color: var(--rose-dark);
+    margin-right: 8px;
+    font-weight: 400;
+  }
+
+  .concern-tagline {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(16px, 3vw, 22px);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--text-mid);
+  }
+
+  /* ── RESULTS ── */
+  .results-section {
+    padding: 120px 24px;
+    background: var(--rose-dark);
+  }
+
+  .results-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .results-header .section-label { color: var(--rose-pale); opacity: 0.7; }
+  .results-header .section-title { color: var(--cream); }
+  .results-header .section-title em { color: var(--rose-pale); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 48px;
+  }
+
+  .stat-item {
+    background: rgba(255,255,255,0.08);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .stat-num span {
+    font-size: 0.45em;
+    vertical-align: super;
+    font-family: 'Noto Serif JP', serif;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--rose-pale);
+    line-height: 1.8;
+  }
+
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .voice-card {
+    background: rgba(255,255,255,0.1);
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .voice-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--rose-pale);
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  .voice-text {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 2.4;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .voice-attr {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--rose-pale);
+    opacity: 0.7;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 16px;
+  }
+
+  /* ── PRICE ── */
+  .price-section {
+    padding: 120px 24px;
+    background: var(--cream);
+  }
+
+  .price-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .price-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .price-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+  }
+
+  .price-card {
+    border: 1px solid var(--rose-pale);
+    padding: 48px 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .price-card.featured {
+    border-color: var(--rose-mid);
+    border-width: 2px;
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rose-dark);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    padding: 6px 16px;
+  }
+
+  .price-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: var(--rose-mid);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 7vw, 52px);
+    font-weight: 300;
+    color: var(--brown-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .price-tax {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+  }
+
+  .price-breakdown {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+  }
+
+  .price-note {
+    background: var(--rose-mist);
+    padding: 28px 32px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 2.4;
+    letter-spacing: 0.1em;
+    color: var(--text-mid);
+  }
+
+  .price-note strong {
+    color: var(--rose-dark);
+    font-weight: 400;
+  }
+
+  .price-remarks {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.6;
+    letter-spacing: 0.1em;
+    color: var(--text-light);
+  }
+
+  /* ── OWNER ── */
+  .owner-section {
+    padding: 120px 24px;
+    background: var(--rose-mist);
+  }
+
+  .owner-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .owner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.06em;
+    color: var(--brown-dark);
+    margin-bottom: 60px;
+  }
+
+  .owner-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 3.2;
+    letter-spacing: 0.15em;
+    color: var(--text-mid);
+    margin-bottom: 48px;
+  }
+
+  .owner-body strong {
+    color: var(--brown-dark);
+    font-weight: 400;
+  }
+
+  .owner-sig {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--text-mid);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .owner-sig::before,
+  .owner-sig::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--rose-mid);
+  }
+
+  /* ── RESERVATION ── */
+  .reservation-section {
+    padding: 120px 24px;
+    background: var(--rose-dark);
+    text-align: center;
+  }
+
+  .reservation-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .reservation-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .reservation-sub {
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    color: var(--rose-pale);
+    margin-bottom: 64px;
+    line-height: 2;
+  }
+
+  .reservation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    padding: 22px 40px;
+    background: var(--white);
+    color: var(--rose-dark);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--rose-pale);
+  }
+
+  .btn-outline {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    padding: 22px 40px;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(255,255,255,0.4);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--rose-pale);
+    color: var(--rose-pale);
+  }
+
+  .reservation-notes {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.8;
+    letter-spacing: 0.1em;
+    color: var(--rose-pale);
+    opacity: 0.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--brown-dark);
+    padding: 72px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.5em;
+    color: var(--beige);
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 11px;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    color: var(--beige);
+    opacity: 0.6;
+    margin-bottom: 40px;
+  }
+
+  .footer-info {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 2.6;
+    letter-spacing: 0.12em;
+    color: var(--beige);
+    opacity: 0.6;
+    margin-bottom: 32px;
+  }
+
+  .footer-copy {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--beige);
+    opacity: 0.4;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scrollAnim {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">BLUE STAR · SKIN REGENERATION PROJECT</p>
+    <h1 class="hero-title">
+      肌の構造から、
+      <em>変えていく。</em>
+    </h1>
+    <p class="hero-sub">
+      塗るケアでは届かない場所がある。<br>
+      ブルースターの美肌再生プロジェクトは<br>
+      肌の深部から、本物の変化をつくります。
+    </p>
+    <a href="#reservation" class="hero-cta">ご予約・お問い合わせ</a>
+  </div>
+  <div class="hero-scroll">
+    <p>SCROLL</p>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <span class="section-label">ARE YOU FEELING THIS?</span>
+    <h2 class="section-title">こんなふうに<br><em>感じていませんか？</em></h2>
+    <div class="pain-list">
+      <div class="pain-item">何をしても肌が戻らなくなった</div>
+      <div class="pain-item">ファンデーションが決まらない</div>
+      <div class="pain-item">首のシワやたるみが気になる</div>
+      <div class="pain-item">くすみ・透明感の低下を感じる</div>
+      <div class="pain-item">毛穴・凹凸が目立ってきた</div>
+      <div class="pain-item">「最近、何かした？」と言われたい</div>
+    </div>
+    <p class="pain-lead">
+      その変化は、肌の表面ではなく<br>
+      <strong>構造そのものが変わってきているサイン。</strong>
+      塗るだけのケアでは届かない場所に、届けることができます。
+    </p>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept-section">
+  <span class="section-label">CONCEPT</span>
+  <h2 class="section-title">美容液を「塗る」から<br><em>「届ける」</em>へ。</h2>
+  <p class="concept-text">
+    ブルースターの美肌再生プロジェクトは<br>
+    3種類の最先端美容液を1本に凝縮し、<br>
+    <strong>肌の深部まで確実に届けます。</strong>
+    顔だけでなく、首まで。<br>
+    60分で、肌の構造から整えるフェイシャルです。
+  </p>
+</section>
+
+<!-- INGREDIENTS -->
+<section class="ingredient-section">
+  <div class="ingredient-inner">
+    <div class="ingredient-header">
+      <span class="section-label">ACTIVE INGREDIENTS</span>
+      <h2 class="section-title">3種の<em>美容液</em>を1本に凝縮</h2>
+    </div>
+    <div class="ingredient-grid">
+      <div class="ingredient-card">
+        <div class="ingredient-num">01</div>
+        <div class="ingredient-name">トリプルエクソソーム</div>
+        <div class="ingredient-name-en">Triple Exosome</div>
+        <p class="ingredient-desc">細胞の再生・修復を促す最先端成分。オーナー自身が2年3ヶ月毎月注射し、その変化を身体で確かめてきた成分です。肌の根本からアプローチします。</p>
+      </div>
+      <div class="ingredient-card">
+        <div class="ingredient-num">02</div>
+        <div class="ingredient-name">リジュラン</div>
+        <div class="ingredient-name-en">Rejuran</div>
+        <p class="ingredient-desc">真皮に働きかけ、ハリと弾力を引き出す成分。肌の土台を修復することで、内側からふっくらとした肌へ導きます。</p>
+      </div>
+      <div class="ingredient-card">
+        <div class="ingredient-num">03</div>
+        <div class="ingredient-name">グルタチオン</div>
+        <div class="ingredient-name-en">Glutathione</div>
+        <p class="ingredient-desc">透明感・美白効果をもたらす成分。くすみのない、光を宿すような明るい肌へ。継続することでさらに深い変化が生まれます。</p>
+      </div>
+    </div>
+    <div class="ingredient-note">
+      これら3種をすべて1本に凝縮し、顔と首に惜しみなく使用します。<br>
+      <strong>量も、設計も、妥協しない。だから、結果が出ます。</strong>
+    </div>
+  </div>
+</section>
+
+
+<!-- FLOW -->
+<section class="flow-section">
+  <div class="flow-inner">
+    <div class="flow-header">
+      <span class="section-label">TREATMENT FLOW</span>
+      <h2 class="section-title">施術の<em>流れ</em>（60分）</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-body">
+          <h3>ディープクレンジング・濃密泡洗顔</h3>
+          <p>肌の汚れを丁寧に落とし、美容液が届きやすい状態に整えます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-body">
+          <h3>毛穴洗浄 or ソフトピーリング</h3>
+          <p>肌の状態に合わせて毛穴の汚れを取り除き、美容液の浸透経路を開きます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-body">
+          <h3>プラズマ照射（浸透経路をつくる）</h3>
+          <p>美容液が深部まで届くための経路を形成。肌への準備を整えます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-body">
+          <h3>サーマフラクショナル（肌の土台にアプローチ）</h3>
+          <p>肌の深層部に働きかけ、ハリ・弾力の土台を整えます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">5</div>
+        <div class="flow-step-body">
+          <h3>美容液導入・ポテンツァ（深部まで届ける）</h3>
+          <p>3種の美容液を1本に凝縮し、顔と首にしっかり導入。深部まで届けます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">6</div>
+        <div class="flow-step-body">
+          <h3>プラズマ仕上げ導入・仕上げクリーム</h3>
+          <p>美容液をさらに定着させ、肌を整えて完了。施術直後から変化を感じていただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCERN -->
+<section class="concern-section">
+  <div class="concern-inner">
+    <div class="concern-header">
+      <span class="section-label">FOR YOU</span>
+      <h2 class="section-title">こんな<em>お悩み</em>をお持ちの方へ</h2>
+    </div>
+    <div class="concern-grid">
+      <div class="concern-item">毛穴・凹凸が気になる</div>
+      <div class="concern-item">たるみ・ハリ不足を感じている</div>
+      <div class="concern-item">くすみ・透明感の低下</div>
+      <div class="concern-item">首のシワやゆるみ</div>
+      <div class="concern-item">ファンデーションが決まらない</div>
+      <div class="concern-item">肌の変化を感じ始めた</div>
+      <div class="concern-item">スキンケアの効果を感じにくくなった</div>
+      <div class="concern-item">本格的なケアを試してみたい</div>
+    </div>
+    <p class="concern-tagline">表面的なケアでは物足りない方へ。</p>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section">
+  <div class="results-inner">
+    <div class="results-header">
+      <span class="section-label">REAL RESULTS</span>
+      <h2 class="section-title">数字が、<em>語ります。</em></h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">28<span>名</span></div>
+        <div class="stat-label">メンバー55名中<br>施術を受けた方</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24<span>名</span></div>
+        <div class="stat-label">リピートされた方<br>（施術者の86%）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6<span>回</span></div>
+        <div class="stat-label">コース終了者も<br>続出しています</div>
+      </div>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">毛穴がなくなったと思うくらい変わりました。ファンデーションがいらないと感じる日が増えています。</p>
+        <div class="voice-attr">40代 / メンバー</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">首まで施術してくれるのがここだけ。デコルテラインが変わって、久しぶりに首元が出せるようになりました。</p>
+        <div class="voice-attr">50代 / メンバー</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote">"</div>
+        <p class="voice-text">「最近、何かしてる？」と友人に言われました。静かに、でも確実に変わっていく感じがあります。</p>
+        <div class="voice-attr">40代 / メンバー</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section">
+  <div class="price-inner">
+    <div class="price-header">
+      <span class="section-label">PRICE</span>
+      <h2 class="section-title">料　金</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <span class="price-label">NEW GUEST</span>
+        <div class="price-amount">¥16,500</div>
+        <div class="price-tax">（税込）</div>
+        <div class="price-breakdown">
+          美容液：¥6,600<br>
+          施術60分：¥9,900
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">MEMBER</div>
+        <span class="price-label">MEMBER</span>
+        <div class="price-amount">¥12,100</div>
+        <div class="price-tax">（税込）</div>
+        <div class="price-breakdown">
+          美容液：¥5,500<br>
+          施術60分：¥6,600
+        </div>
+      </div>
+    </div>
+    <div class="price-note">
+      他院では<strong>¥20,000を超える</strong>内容です。<br>
+      メンバー様には最高の施術を、めちゃくちゃリーズナブルに。
+    </div>
+    <div class="price-remarks">
+      ※新規の方は1回からご予約いただけます。<br>
+      ※上小田井店ではメンバー向けモニターコース（6回）もございます。<br>
+      ※空き状況はインスタグラムDMよりご確認ください。
+    </div>
+  </div>
+</section>
+
+<!-- OWNER -->
+<section class="owner-section">
+  <div class="owner-inner">
+    <span class="section-label">FROM OWNER</span>
+    <h2 class="owner-title">なぜ、この施術なのか。</h2>
+    <div class="rose-divider" style="margin-bottom:48px;">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line r"></div>
+    </div>
+    <p class="owner-body">
+      私はトリプルエクソソームを、2年3ヶ月毎月注射し続けています。<br>
+      身体を修復するために。細胞が目を覚ます感覚を、何度も感じてきました。<br><br>
+      メンバーさんの中にも継続している方がいて、<br>
+      その変化をずっと見てきました。<br><br>
+      <strong>だから、確信がありました。</strong><br><br>
+      この成分が、ちゃんと肌に届いたら──きっと変わる。<br>
+      この製品でなければ、やっていません。
+    </p>
+    <div class="owner-sig">ブルースター オーナー　前田明子</div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation-section" id="reservation">
+  <div class="reservation-inner">
+    <span class="section-label" style="color:rgba(250,217,224,0.7);">RESERVATION</span>
+    <h2 class="reservation-title">まずは、<br>お気軽に ご相談を。</h2>
+    <p class="reservation-sub">新規の方も1回からご予約いただけます。</p>
+    <div class="reservation-buttons">
+      <a href="https://beauty.hotpepper.jp/kr/slnH000652002/" target="_blank" class="btn-primary">
+        上小田井店を予約する
+      </a>
+      <a href="https://www.instagram.com/bluestar_kamiotai/" target="_blank" class="btn-outline">
+        インスタグラムでDM相談する　@bluestar_kamiotai
+      </a>
+    </div>
+    <div class="reservation-notes">
+      ※施術時間は約60分です。<br>
+      ※メンバーの方はメンバー価格でご利用いただけます。<br>
+      ※上小田井店モニターのご相談はインスタDMまで。
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">BLUE STAR</div>
+  <div class="footer-tagline">会員制エステサロン ブルースター上小田井</div>
+  <div class="footer-info">
+    愛知県名古屋市西区貴生町107-1　アルタシオン503号<br>
+    上小田井駅 / 南口 / 徒歩1分<br>
+    ご予約・お問い合わせはインスタグラムDMにて
+  </div>
+  <div class="footer-copy">© BLUE STAR All rights reserved.</div>
+</footer>
+
+</body>
+</html>
